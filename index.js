@@ -23,7 +23,7 @@ var options = {
   }
 }
 
-app.use(express.static('assets', options))
+app.use(express.static(__dirname+'/assets', options))
 
 app.use(bodyParser.urlencoded({
   extended: true
