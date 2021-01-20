@@ -1,0 +1,48 @@
+<div id="wrapper">
+  {{> sidebar}}
+  <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+      {{> topbar}}
+      <div class="container-fluid">
+        <!-- Heading -->
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Your cart</span>
+          <span class="badge badge-secondary badge-pill">3</span>
+        </h4>
+
+        <!-- Cart -->
+        <ul class="list-group mb-3 z-depth-1">
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">{{dataOrder.nama_barang}}</h6>
+              <small class="text-muted">victoria topup</small>
+            </div>
+            <span class="text-muted">{{dataOrder.gross_amount}}</span>
+          </li>
+        </ul>
+      </div>
+      <!-- Cart -->
+      <div class="container-fluid">
+        <button class="btn btn-primary" id="transfer" type="submit">Bayar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var payButton = document.getElementById('transfer');
+  var nama = '{{data.nama}}',
+  email = '{{data.contact}}',
+  key = '{{data.key}}',
+  data = {
+    nama,
+    email,
+    key
+  };
+  // For example trigger on button clicked, or any time you need
+  payButton.addEventListener('click', function() {
+    snap.pay('{{token}}');
+  }
+  })
+})
+</script>

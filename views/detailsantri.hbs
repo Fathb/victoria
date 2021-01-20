@@ -1,0 +1,28 @@
+<div class="col-12">
+  <h2>detail santri</h2>
+  <form method="post" action="/santri/{{data.idx}}">
+    <div class="row mb-2">
+      <div class="col-2">
+        nama
+      </div>
+      <div class="col-1">
+        :
+      </div>
+      <div class="col-5">
+        <input value="{{data.nama}}" id="nama" name="nama">
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-2">
+        alamat
+      </div>
+      <div class="col-1">
+        :
+      </div>
+      <div class="col-5">
+        <input value="{{data.alamat}}" id="alamat" name="alamat">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-dark" href="/santri">update</button>
+  </form>
+</div>

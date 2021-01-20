@@ -1,0 +1,33 @@
+<div class="col-12">
+  <h2>data santri</h2>
+  <h4>
+    <a href="/formtambah" class="btn btn-primary">add user</a>
+  </h4>
+  <div class="row mb-2">
+    <div class="col-3">
+      nama
+    </div>
+    <div class="col-3">
+      Alamat
+    </div>
+    <div class="col-6">
+      actions
+    </div>
+  </div>
+  {{#each data}}
+  <div class="row mb-2">
+    <div class="col-3">
+      {{nama}}
+    </div>
+    <div class="col-3">
+      {{alamat}}
+    </div>
+    <div class="col-3">
+      <a class="btn btn-success" href="/santri/{{idx}}">Edit</a>
+    </div>
+    <div class="col-3">
+      <a class="btn btn-danger" href="/hapusSantri/{{idx}}">Hapus</a>
+    </div>
+  </div>
+  {{/each}}
+</div>

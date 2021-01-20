@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="header justify-content-center">
+    <h4>Wellcome to form registration</h4>
+    <h3><small>of</small> VICTORIA ORGANIZER</h3>
+  </div>
+
+  {{#if message}}
+  <div class="alert{{messageClass}}" role="alert">
+    {{message}}
+  </div>
+  {{/if}}
+
+  <form method="post" action="/registrasi">
+    <div class="form-group">
+      <div class="form-group">
+        <label for="nama">nama : </label>
+        <input class="form-control" type="text" name="nama" id="nama" value="" required>
+      </div>
+      <div class="form-group">
+        <label for="tim">nama tim : </label>
+        <input class="form-control" type="text" name="tim" id="tim" value="" required>
+      </div>
+      <div class="form-group">
+        <label for="contact">contact : </label>
+        <input class="form-control" type="text" name="contact" id="contact" value="" placeholder="email/phone number" required>
+      </div>
+      <div class="form-group">
+        <label for="tim">password : </label>
+        <input class="form-control" type="password" name="password" id="password" value="" required>
+      </div>
+      <input class="btn btn-primary" type="submit" value="submit">
+    </div>
+  </form>
+</div>
