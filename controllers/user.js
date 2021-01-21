@@ -89,6 +89,7 @@ module.exports = {
           data: user,
           dataTrx,
           title: 'top up page',
+          url: req.headers.host
         });
       });
     } else {
@@ -99,9 +100,10 @@ module.exports = {
     }
   },
   bayarTopUp: function (req, res) {
-    console.log(req.baseUrl);
     console.log(req.params);
+    console.log(req.headers.host);
     res.render('user/bayar', {
+      key: clientKey,
       token: req.params.token
     })
   }

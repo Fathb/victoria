@@ -36,7 +36,7 @@ app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({
   extended: true
 })) // for parsing application/x-www-form-urlencoded
-const port = process.env.PORT || 5000
+const port = 5001;
 app.use(userRouter);
 app.use(authRouter);
 app.use(midtransRouter);
