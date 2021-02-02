@@ -23,26 +23,20 @@
       </div>
       <!-- Cart -->
       <div class="container-fluid">
-        <button class="btn btn-primary" id="transfer" type="submit">Bayar</button>
+        <a href="/topup" class="btn btn-secondary">kembali</a>
+        <button class="btn btn-primary" id="transfer">Bayar</button>
       </div>
     </div>
   </div>
 </div>
 
 <script type="text/javascript">
-  var payButton = document.getElementById('transfer');
-  var nama = '{{data.nama}}',
-  email = '{{data.contact}}',
-  key = '{{data.key}}',
-  data = {
-    nama,
-    email,
-    key
-  };
-  // For example trigger on button clicked, or any time you need
-  payButton.addEventListener('click', function() {
-    snap.pay('{{token}}');
-  }
-  })
-})
+  var payButton = document.getElementById("transfer");
+  payButton.addEventListener("click", function() {
+    snap.pay("{{token}}", {
+      onPending: function (result) {
+        alert(JSON.parse(result));
+      }
+    });
+  });
 </script>

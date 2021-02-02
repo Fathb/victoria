@@ -18,7 +18,7 @@ module.exports = {
         status: true,
         data: user,
         method: req.method,
-        url: req.url,
+        baseUrl: req.headers.host,
         title: 'User Dashboard'
       })
     } else {
@@ -88,8 +88,7 @@ module.exports = {
           key: clientKey,
           data: user,
           dataTrx,
-          title: 'top up page',
-          url: req.headers.host
+          title: 'top up page'
         });
       });
     } else {
@@ -100,11 +99,21 @@ module.exports = {
     }
   },
   bayarTopUp: function (req, res) {
-    console.log(req.params);
-    console.log(req.headers.host);
-    res.render('user/bayar', {
-      key: clientKey,
-      token: req.params.token
-    })
+    const user = req.cookies.AuthToken;
+    if (user) {
+      res.render('user/bayar', {
+        key: clientKey,
+        data: user,
+        token: req.params.token
+      });
+    } else {
+      res.redirect('/dashboard')
+    }
+  },
+  hapusTrx: function(req, res) {
+    console.log(req.params.token)
+    console.log(req.body)
+    db.ref('transaction/'+req.params.token).remove();
+    res.send('trx di hapus');
   }
 }

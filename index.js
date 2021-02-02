@@ -23,7 +23,6 @@ var options = {
   }
 }
 
-app.use(express.static(__dirname+'/assets', options))
 
 app.use(bodyParser.urlencoded({
   extended: true
@@ -36,6 +35,8 @@ app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({
   extended: true
 })) // for parsing application/x-www-form-urlencoded
+app.use(express.static('assets/'));
+
 const port = process.env.PORT || 8080;
 app.use(userRouter);
 app.use(authRouter);
@@ -54,3 +55,4 @@ app.get('/', function(req, res) {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
+

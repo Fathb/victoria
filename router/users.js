@@ -14,6 +14,7 @@ router.route('/topup')
 
 router.route('/topup/:token')
 .get(usersCtl.bayarTopUp)
+.post(usersCtl.hapusTrx)
 
 
 module.exports = router

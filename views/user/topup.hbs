@@ -48,18 +48,24 @@
               <td>{{gross_amount}}</td>
               <td>{{va_number.va_number}}</td>
               <td>{{status}}</td>
-              <td><a class="btn btn-primary" href="/topup/{{token}}">pay</a></td>
+              <td>
+                <a class="btn btn-primary bayar" href="/topup/{{token}}">pay</a>
+                <button class="btn btn-danger delete" data-token="{{token}}" data-id="{{order_id}}">hapus</button></td>
             </tr>
             {{/each}}
           </tbody>
         </table>
       </div>
-      <p id="showToken">
-        haloooo......!!!!!
-      </p>
     </div>
   </div>
 </div>
 <script type="text/javascript">
-
+  const btnHapus = document.querySelectorAll('.delete');
+  btnHapus.forEach(function(hapus) {
+    hapus.addEventListener('click', function() {
+      var orderId = $(this).data('id');
+      var token = $(this).data('token');
+      snap.pay(token)
+    })
+  })
 </script>
