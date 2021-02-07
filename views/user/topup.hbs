@@ -49,8 +49,9 @@
               <td>{{va_number.va_number}}</td>
               <td>{{status}}</td>
               <td>
-                <a class="btn btn-primary bayar" href="/topup/{{token}}">pay</a>
-                <button class="btn btn-danger delete" data-token="{{token}}" data-id="{{order_id}}">hapus</button></td>
+                <button class="btn btn-primary bayar" data-token="{{token}}" data-id="{{order_id}}">bayar</button>
+                <button class="btn btn-danger delete" data-token="{{token}}" data-id="{{order_id}}">hapus</button>
+              </td>
             </tr>
             {{/each}}
           </tbody>
@@ -60,12 +61,27 @@
   </div>
 </div>
 <script type="text/javascript">
-  const btnHapus = document.querySelectorAll('.delete');
-  btnHapus.forEach(function(hapus) {
-    hapus.addEventListener('click', function() {
+  const btnBayar = document.querySelectorAll('.bayar');
+  btnBayar.forEach(function(bayar) {
+    bayar.addEventListener('click', function(e) {
+      e.preventDefault();
       var orderId = $(this).data('id');
       var token = $(this).data('token');
       snap.pay(token)
-    })
+    });
+  });
+  const btnHapus = document.querySelectorAll('.delete');
+  btnHapus.forEach(hapus=> {
+    hapus.addEventListener('click', function(e) {
+      var orderId = $(this).data('id');
+      var token = $(this).data('token');
+      $.ajax({
+        url: 'http://localhost:8080/topup/'+orderId,
+        method: 'post',
+        success: function(e) {
+          console.log(e)
+        }
+      })
+    });
   })
 </script>

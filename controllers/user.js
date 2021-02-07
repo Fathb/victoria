@@ -70,7 +70,7 @@ module.exports = {
       db.ref('transaction/'+dataOrder.order_id)
       .update(dataOrder);
     });
-    res.redirect('/topup');
+    res.redirect('http://localhost:8080/topup');
   },
 
   topupView: function (req, res) {
@@ -111,8 +111,6 @@ module.exports = {
     }
   },
   hapusTrx: function(req, res) {
-    console.log(req.params.token)
-    console.log(req.body)
     db.ref('transaction/'+req.params.token).remove();
     res.send('trx di hapus');
   }
